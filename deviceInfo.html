@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>设备信息</title>
+</head>
+<body>
+	
+</body>
+<script>
+	document.write('当前窗口宽度：'+window.innerWidth)
+		document.write("<br>")
+		document.write('当前窗口高度：'+window.innerHeight)
+		document.write("<br>")
+		document.write('当前屏幕宽度：'+screen.width)
+		document.write("<br>")
+		document.write('当前屏幕高度：'+screen.height)
+		document.write("<br>")
+		document.write("<br>")
+		document.write('availWidth：'+screen.availWidth)
+		document.write("<br>")
+		document.write('availHeight：'+screen.availHeight)
+		document.write("<br>")
+		var dpr = window.devicePixelRatio;
+		document.write("DPR："+dpr)
+		document.write("<br>")
+		var str =  screen.width*dpr + 'X' + screen.height*dpr
+		document.write("实际屏幕分辨率：" + str)
+		document.write("<br>")
+		document.write('当前系统语言：'+navigator.language)
+		document.write("<br>")
+		document.write('当前系统和版本：'+get_android_version())
+		document.write("<br>")
+		document.write("<br>")
+		document.write('userAgent：'+ navigator.userAgent)
+		
+
+		function get_android_version() {
+            var ua = navigator.userAgent.toLowerCase();
+            var version = null;
+            if (ua.indexOf("android") > 0) {
+                var reg = /android [\d._]+/gi;
+                var v_info = ua.match(reg);
+				return(v_info[0])
+            }else if(ua.indexOf("iphone") > 0){
+            	console.log(ua)
+            	var reg = /iphone os [\d._]+/gi;
+                var v_info = ua.match(reg);
+				var a = v_info[0].replace(/os/gi,'')
+				var a = a.replace(/_/gi,'.')
+				return a.replace(/ /,'')
+            }
+
+            return version;
+        }
+</script>
+</html>
